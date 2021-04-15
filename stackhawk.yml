@@ -1,0 +1,18 @@
+app:
+  applicationId: b3fef1e4-3fe8-43d3-9084-1005dc029f9c # (required)
+  env: learnin # (required)
+  host: https://web-stage.learnin2432.com # (required)
+  authentication:
+   loggedInIndicator: ".*200.*" # (required)
+   loggedOutIndicator: ".*401.*" # (required)
+   testPath:
+     type: HEADER
+     path: /api/external
+     success: ".*200.*"
+   external:
+     type: TOKEN
+     value: ${AUTH_TOKEN}
+   tokenAuthorization:
+     type: HEADER
+     value: Authorization
+     tokenType: Bearer
